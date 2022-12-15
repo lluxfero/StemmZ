@@ -63,6 +63,7 @@ static string ConvertWord(string word) // функция конвертиров�
         word = word[0] + "х" + word[2..];
     }
     if (word == "двумя") { word = "двуми"; }
+
     word = word.Replace("и", ",ы");
     word = word.Replace("я", ",а");
     word = word.Replace("ю", ",у");
@@ -105,7 +106,7 @@ static string FormalStemming(string word) // функция выделения �
         {
             word = StemmingWord(word, "кто", "к");
             word = StemmingWord(word, "что", "ч");
-            word = CutWordEnding(word, "айас,а");
+            word = CutWordEnding(word, "айас,а"); // предваряет усечение окончаний существительных и прилагательных, которым может предшествовать мягкий "с", чтобы слова "карась" и "карасем" получили одинаковый разбор
             word = CutWordEnding(word, "уйус,а");
             word = CutWordEnding(word, "ым,ыс,а");
             word = CutWordEnding(word, "м,ы");
